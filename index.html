@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtual Spacewalk</title>
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../../node_modules/three/build/three.module.js",
+          "three/addons/": "../../node_modules/three/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- <div id="space-container"></div>
+    <div id="loading">Loading Spacewalk...</div> -->
+
+    <main id="app">
+      <section class="screen active" data-screen="idle">
+        <div class="hero">
+          <div class="eyebrow">INTERACTIVE SPACE EXPERIENCE</div>
+          <h1>VIRTUAL<br /><span>SPACEWALK</span></h1>
+          <p>Prepare to leave Earth.</p>
+          <button class="primary" data-action="start">START</button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="suit-select">
+        <div class="screen-header">
+          <span>01 / SUIT</span>
+          <h2>SELECT YOUR SPACE SUIT</h2>
+        </div>
+        <div id="suitGrid" class="card-grid"></div>
+        <button class="primary" data-action="confirm-suit">SELECT</button>
+      </section>
+
+      <section class="screen" data-screen="face-capture">
+        <div class="screen-header">
+          <span>02 / FACE CAPTURE</span>
+          <h2>LOOK AT THE CAMERA</h2>
+        </div>
+        <div class="camera-stage">
+          <video id="camera" autoplay playsinline muted></video>
+          <div class="face-guide"></div>
+        </div>
+        <div class="button-row">
+          <button class="secondary" data-action="back-suit">BACK</button>
+          <button class="primary" data-action="capture-face">CAPTURE</button>
+        </div>
+        <canvas id="faceCanvas" hidden></canvas>
+      </section>
+
+      <!-- <section class="screen" data-screen="astronaut">
+        <div class="screen-header">
+          <span>03 / YOUR ASTRONAUT</span>
+          <h2>READY FOR SPACEWALK</h2>
+        </div>
+        <div id="astronautStage" class="three-stage">
+          <div class="placeholder-astronaut">
+            <div class="helmet">
+              <img id="astronautFace" alt="Player face" />
+            </div>
+            <div class="body">ASTRONAUT MODEL</div>
+          </div>
+        </div>
+        <button class="primary" data-action="choose-planet">
+          CHOOSE PLANET
+        </button>
+      </section> -->
+
+      <!-- <section id="screen-astronaut" class="screen">
+        <div class="astronaut-header">
+          <h1>YOUR ASTRONAUT</h1>
+
+          <p>หมุนโมเดลเพื่อดูชุดอวกาศ</p>
+        </div>
+
+        <div id="threeContainer" class="three-container"></div>
+
+        <div class="astronaut-controls">
+          <button data-action="back-astronaut" class="btn secondary">
+            ← BACK
+          </button>
+
+          <button data-action="choose-planet" class="btn primary">
+            เลือกดาวเคราะห์ →
+          </button>
+        </div>
+      </section> -->
+
+      <section class="screen" data-screen="astronaut">
+        <div class="screen-header">
+          <span>03 / YOUR ASTRONAUT</span>
+
+          <h2>READY FOR SPACEWALK</h2>
+        </div>
+
+        <div id="astronautStage">
+          <div id="threeContainer"></div>
+        </div>
+
+        <button class="primary" data-action="choose-planet">
+          CHOOSE PLANET
+        </button>
+      </section>
+
+      <!--  -->
+
+      <section class="screen" data-screen="planet-select">
+        <div class="screen-header">
+          <span>04 / DESTINATION</span>
+          <h2>WHERE DO YOU WANT TO GO?</h2>
+        </div>
+
+        <div class="weight-panel">
+          <span>YOUR EARTH WEIGHT</span>
+          <strong id="earthWeight">--.- kg</strong>
+          <small id="weightStatus">Demo weight</small>
+        </div>
+
+        <div id="planetGrid" class="planet-grid"></div>
+
+        <div class="button-row">
+          <button class="secondary" data-action="back-astronaut">BACK</button>
+          <button class="primary" data-action="confirm-planet">SELECT</button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="spacewalk">
+        <div id="spacewalkScene" class="spacewalk-scene">
+          <div class="space-bg"></div>
+          <div class="planet-surface"></div>
+          <div class="flag">🚩</div>
+
+          <div class="final-astronaut">
+            <div class="helmet"><img id="finalFace" alt="Player face" /></div>
+            <div class="body">ASTRONAUT</div>
+          </div>
+
+          <div class="destination-card">
+            <span id="destinationName">MARS</span>
+            <small>YOUR WEIGHT</small>
+            <strong id="planetWeight">--.- kg</strong>
+          </div>
+
+          <button class="capture-button" data-action="take-photo">📸</button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="qr">
+        <div class="qr-layout">
+          <div>
+            <div class="eyebrow">MISSION COMPLETE</div>
+            <h2>YOUR SPACEWALK</h2>
+            <p id="savedPath">Photo saved.</p>
+          </div>
+          <div class="qr-card">
+            <div id="qrcode">QR DOWNLOAD</div>
+            <span>SCAN TO DOWNLOAD</span>
+          </div>
+        </div>
+        <button class="primary" data-action="restart">NEW SPACEWALK</button>
+      </section>
+    </main>
+
+    <script src="./js/state.js"></script>
+    <script src="./js/camera.js"></script>
+    <script src="./js/astronaut.js"></script>
+    <script src="./js/planets.js"></script>
+    <script src="./js/capture.js"></script>
+    <script src="./js/ui.js"></script>
+    <!-- <script src="./js/app.js"></script> -->
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
