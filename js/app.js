@@ -7,11 +7,11 @@
 
 
 
-import {
-  initThreeScene,
-  loadAstronautModel,
-  setPlayerFace
-} from "./threeScene.js";
+// import {
+//   initThreeScene,
+//   loadAstronautModel,
+//   setPlayerFace
+// } from "./threeScene.js";
 
 
 
