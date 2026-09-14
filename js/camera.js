@@ -46,7 +46,7 @@ async function captureFace() {
   const dataUrl = canvas.toDataURL("image/png");
   setState("faceDataUrl", dataUrl);
 
-  // document.getElementById("astronautFace").src=dataUrl;
+   document.getElementById("astronautFace").src=dataUrl;
   document.getElementById("finalFace").src = dataUrl;
 
   stopCamera();
